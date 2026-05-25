@@ -1,0 +1,6 @@
+# DocuMind AI – Frontend Dependencies
+# Python 3.11+
+
+streamlit>=1.35.0
+requests==2.32.2
+python-dotenv==1.0.1

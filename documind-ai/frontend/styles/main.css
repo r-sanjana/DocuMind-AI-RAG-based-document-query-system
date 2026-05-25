@@ -1,0 +1,861 @@
+/* DocuMind AI – Professional dark theme (high contrast, accessible) */
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap');
+
+/* ── Design tokens ─────────────────────────────────────────────────────── */
+:root {
+    --bg-primary: #0c0e14;
+    --bg-secondary: #13161f;
+    --bg-elevated: #1a1f2e;
+    --bg-card: #1e2433;
+    --bg-input: #252b3d;
+    --bg-hover: #2a3145;
+    --accent: #6366f1;
+    --accent-hover: #818cf8;
+    --accent-muted: rgba(99, 102, 241, 0.18);
+    --accent-border: rgba(129, 140, 248, 0.45);
+    --success: #34d399;
+    --danger: #f87171;
+    --warning: #fbbf24;
+    --text-primary: #f8fafc;
+    --text-secondary: #e2e8f0;
+    --text-tertiary: #cbd5e1;
+    --text-muted: #94a3b8;
+    --text-placeholder: #94a3b8;
+    --text-on-accent: #ffffff;
+    --border: rgba(148, 163, 184, 0.22);
+    --border-strong: rgba(148, 163, 184, 0.35);
+    --border-focus: rgba(129, 140, 248, 0.65);
+    --user-bubble: #1e2d4a;
+    --user-border: rgba(129, 140, 248, 0.4);
+    --assistant-bubble: #1a2030;
+    --radius: 12px;
+    --radius-lg: 16px;
+    --radius-sm: 8px;
+    --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.35);
+    --shadow-md: 0 8px 32px rgba(0, 0, 0, 0.45);
+    --shadow-focus: 0 0 0 3px rgba(99, 102, 241, 0.35);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-mono: 'JetBrains Mono', ui-monospace, monospace;
+    --line-height: 1.6;
+    --line-height-tight: 1.45;
+}
+
+/* ── App shell ───────────────────────────────────────────────────────────── */
+* {
+    box-sizing: border-box;
+}
+
+.stApp {
+    background: var(--bg-primary) !important;
+    font-family: var(--font) !important;
+    color: var(--text-primary) !important;
+    font-size: 15px !important;
+    line-height: var(--line-height) !important;
+}
+
+.main .block-container {
+    padding-top: 2rem !important;
+    padding-bottom: 2.5rem !important;
+    max-width: 1100px !important;
+}
+
+/* Main content typography */
+.main p,
+.main li,
+.main span,
+.main label {
+    color: var(--text-secondary) !important;
+}
+
+.main h1, .main h2, .main h3 {
+    color: var(--text-primary) !important;
+    font-weight: 600 !important;
+    letter-spacing: -0.02em !important;
+}
+
+/* ── Sidebar (Streamlit 1.35–1.57) ───────────────────────────────────────── */
+section[data-testid="stSidebar"],
+[data-testid="stSidebar"] {
+    background: var(--bg-secondary) !important;
+    border-right: 1px solid var(--border-strong) !important;
+    min-width: 20rem !important;
+    max-width: 20rem !important;
+    width: 20rem !important;
+    transform: none !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    flex-shrink: 0 !important;
+}
+
+[data-testid="stSidebarUserContent"],
+[data-testid="stSidebarContent"] {
+    padding: 1.5rem 1.25rem 2rem !important;
+}
+
+/* 1.57: expand control lives in the header toolbar — do NOT hide stToolbar */
+[data-testid="stExpandSidebarButton"],
+[data-testid="stSidebarCollapseButton"] {
+    display: inline-flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    z-index: 999 !important;
+}
+
+section[data-testid="stSidebar"] p,
+section[data-testid="stSidebar"] label,
+section[data-testid="stSidebar"] span,
+section[data-testid="stSidebar"] [data-testid="stMarkdown"] p,
+section[data-testid="stSidebar"] .stSlider label,
+section[data-testid="stSidebar"] [data-testid="stWidgetLabel"] p {
+    font-weight: 500 !important;
+    color: var(--text-tertiary) !important;
+}
+
+section[data-testid="stSidebar"] hr {
+    border-color: var(--border) !important;
+    margin: 1.25rem 0 !important;
+}
+
+.sidebar-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.85rem;
+    padding: 0.25rem 0 0.5rem;
+}
+
+.logo-icon {
+    font-size: 2rem;
+    filter: drop-shadow(0 0 14px rgba(99, 102, 241, 0.5));
+}
+
+.logo-title {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: var(--text-primary) !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    background: none !important;
+    letter-spacing: -0.03em;
+    line-height: 1.2;
+}
+
+.logo-sub {
+    font-size: 0.8rem;
+    color: var(--text-tertiary) !important;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    margin-top: 0.15rem;
+}
+
+.status-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.45rem 0.9rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    margin-bottom: 0.5rem;
+}
+
+.status-badge.status-online {
+    background: rgba(52, 211, 153, 0.22) !important;
+    color: #a7f3d0 !important;
+    border: 1px solid rgba(52, 211, 153, 0.55) !important;
+}
+
+.status-badge.status-offline {
+    background: rgba(248, 113, 113, 0.22) !important;
+    color: #fecaca !important;
+    border: 1px solid rgba(248, 113, 113, 0.55) !important;
+}
+
+.status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.5; }
+}
+
+.sidebar-section-title {
+    font-size: 0.8rem;
+    font-weight: 700;
+    color: var(--text-tertiary) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 0.85rem;
+}
+
+.file-chip {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.55rem 0.85rem;
+    font-size: 0.85rem;
+    color: var(--text-secondary) !important;
+    margin-bottom: 0.45rem;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    font-family: var(--font-mono);
+    font-weight: 500;
+}
+
+.sidebar-footer {
+    font-size: 0.8rem;
+    color: var(--text-muted) !important;
+    border-top: 1px solid var(--border);
+    padding-top: 1rem;
+    margin-top: 1.5rem;
+    line-height: 1.5;
+}
+
+/* ── Buttons ─────────────────────────────────────────────────────────────── */
+.stButton > button {
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
+    color: var(--text-on-accent) !important;
+    border: 1px solid rgba(255, 255, 255, 0.12) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    padding: 0.55rem 1.1rem !important;
+    min-height: 2.5rem !important;
+    transition: background 0.15s ease, box-shadow 0.15s ease, transform 0.15s ease !important;
+    letter-spacing: 0.01em !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+.stButton > button:hover {
+    background: linear-gradient(135deg, #5b52f0 0%, #7577f7 100%) !important;
+    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.45) !important;
+    transform: translateY(-1px) !important;
+}
+
+.stButton > button:focus-visible {
+    outline: none !important;
+    box-shadow: var(--shadow-focus) !important;
+}
+
+/* Secondary / outline buttons (Clear Chat, example prompts, etc.) */
+.stButton > button[kind="secondary"],
+[data-testid="stSidebar"] .stButton > button:not([kind="primary"]) {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-strong) !important;
+    color: var(--text-secondary) !important;
+    box-shadow: none !important;
+}
+
+.stButton > button[kind="secondary"]:hover,
+[data-testid="stSidebar"] .stButton > button:not([kind="primary"]):hover {
+    background: var(--bg-hover) !important;
+    border-color: var(--accent-border) !important;
+    color: var(--text-primary) !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+/* Example prompt buttons in main area */
+.main .stButton > button {
+    background: var(--bg-elevated) !important;
+    border: 1px solid var(--border) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 500 !important;
+    text-align: left !important;
+    line-height: var(--line-height-tight) !important;
+    padding: 0.75rem 1rem !important;
+    min-height: 3.25rem !important;
+}
+
+.main .stButton > button:hover {
+    background: var(--bg-hover) !important;
+    border-color: var(--accent-border) !important;
+    color: var(--text-primary) !important;
+}
+
+.main .stButton > button[kind="primary"],
+[data-testid="stSidebar"] .stButton > button[kind="primary"] {
+    background: linear-gradient(135deg, #4f46e5 0%, #6366f1 100%) !important;
+    color: var(--text-on-accent) !important;
+    border-color: transparent !important;
+}
+
+/* ── Inputs: chat, text, file upload ───────────────────────────────────── */
+[data-testid="stChatInput"] > div,
+[data-testid="stChatInput"] {
+    background: transparent !important;
+}
+
+[data-testid="stChatInput"] textarea,
+[data-testid="stChatInput"] input {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius) !important;
+    color: var(--text-primary) !important;
+    font-family: var(--font) !important;
+    font-size: 1rem !important;
+    font-weight: 400 !important;
+    line-height: 1.5 !important;
+    padding: 0.9rem 1.1rem !important;
+    caret-color: var(--accent-hover) !important;
+}
+
+[data-testid="stChatInput"] textarea::placeholder,
+[data-testid="stChatInput"] input::placeholder,
+.stTextInput input::placeholder,
+[data-testid="stTextArea"] textarea::placeholder {
+    color: var(--text-placeholder) !important;
+    opacity: 1 !important;
+}
+
+[data-testid="stChatInput"] textarea:focus,
+[data-testid="stChatInput"] input:focus,
+.stTextInput input:focus,
+[data-testid="stTextArea"] textarea:focus {
+    border-color: var(--border-focus) !important;
+    box-shadow: var(--shadow-focus) !important;
+    outline: none !important;
+}
+
+.stTextInput input,
+[data-testid="stTextArea"] textarea {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-strong) !important;
+    color: var(--text-primary) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+.chat-input-container {
+    margin-top: 1.5rem;
+    padding-top: 0.5rem;
+}
+
+/* File uploader */
+[data-testid="stFileUploader"] {
+    border: 2px dashed var(--border-strong) !important;
+    border-radius: var(--radius) !important;
+    background: var(--bg-card) !important;
+    padding: 0.5rem !important;
+}
+
+[data-testid="stFileUploader"]:hover {
+    border-color: var(--accent-border) !important;
+    background: var(--accent-muted) !important;
+}
+
+[data-testid="stFileUploader"] label,
+[data-testid="stFileUploader"] small,
+[data-testid="stFileUploaderDropzone"] span,
+[data-testid="stFileUploaderDropzone"] p {
+    color: var(--text-secondary) !important;
+}
+
+[data-testid="stFileUploader"] section,
+[data-testid="stFileUploader"] section > div,
+[data-testid="stFileUploaderDropzone"],
+[data-testid="stFileUploaderDropzone"] > div,
+[data-testid="stFileUploaderDropzoneInstructions"],
+[data-testid="stFileUploaderDropzoneInstructions"] div {
+    background: var(--bg-input) !important;
+    color: var(--text-secondary) !important;
+    border-radius: var(--radius-sm) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileUploader"] .stButton > button,
+[data-testid="stSidebar"] [data-testid="stFileUploader"] button {
+    background: var(--bg-elevated) !important;
+    color: var(--text-primary) !important;
+    border: 1px solid var(--border-strong) !important;
+    font-weight: 600 !important;
+    box-shadow: none !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileUploader"] .stButton > button:hover,
+[data-testid="stSidebar"] [data-testid="stFileUploader"] button:hover {
+    background: var(--bg-hover) !important;
+    border-color: var(--accent-border) !important;
+    color: var(--text-primary) !important;
+    transform: none !important;
+}
+
+[data-testid="stFileUploader"] button svg,
+[data-testid="stFileUploader"] svg {
+    fill: var(--text-primary) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stFileUploader"] small {
+    color: var(--text-muted) !important;
+    font-weight: 500 !important;
+}
+
+/* Uploaded file chips (filename + size) */
+[data-testid="stSidebar"] [data-testid="stFileChips"],
+[data-testid="stSidebar"] [data-testid="stFileChips"] > div {
+    background: transparent !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChip"] {
+    background: var(--bg-hover) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChipName"],
+[data-testid="stSidebar"] [data-testid="stFileChip"] span,
+[data-testid="stSidebar"] [data-testid="stFileChip"] div {
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChip"] small {
+    color: var(--text-muted) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChipDeleteBtn"] button {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    border: none !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChipDeleteBtn"] button:hover {
+    color: var(--text-primary) !important;
+    background: var(--bg-card) !important;
+}
+
+[data-testid="stSidebar"] [data-testid="stFileChipDeleteBtn"] svg {
+    fill: currentColor !important;
+    color: inherit !important;
+}
+
+/* ── Select, slider, metrics ───────────────────────────────────────────── */
+[data-testid="stSelectbox"] > div > div,
+[data-testid="stSelectbox"] [data-baseweb="select"] > div {
+    background: var(--bg-input) !important;
+    border: 1px solid var(--border-strong) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text-primary) !important;
+}
+
+[data-testid="stSelectbox"] [data-baseweb="select"] span,
+[data-testid="stSelectbox"] svg {
+    color: var(--text-secondary) !important;
+}
+
+[data-testid="stSlider"] label {
+    color: var(--text-tertiary) !important;
+    font-weight: 500 !important;
+}
+
+[data-testid="stSlider"] [data-testid="stThumbValue"],
+[data-testid="stSlider"] div[data-testid="stTickBarMin"],
+[data-testid="stSlider"] div[data-testid="stTickBarMax"] {
+    color: var(--text-muted) !important;
+    font-size: 0.8rem !important;
+}
+
+[data-testid="stMetric"] {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius) !important;
+    padding: 0.85rem 1rem !important;
+    box-shadow: var(--shadow-sm) !important;
+}
+
+[data-testid="stMetric"] label {
+    color: var(--text-muted) !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    text-transform: uppercase !important;
+    letter-spacing: 0.06em !important;
+}
+
+[data-testid="stMetric"] [data-testid="stMetricValue"] {
+    color: var(--text-primary) !important;
+    font-family: var(--font-mono) !important;
+    font-size: 1.5rem !important;
+    font-weight: 600 !important;
+}
+
+/* ── Tabs ────────────────────────────────────────────────────────────────── */
+[data-testid="stTabs"] {
+    border-bottom: 1px solid var(--border) !important;
+}
+
+[data-testid="stTabs"] [data-testid="stTab"] {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    font-family: var(--font) !important;
+    font-size: 0.95rem !important;
+    font-weight: 600 !important;
+    border-radius: var(--radius-sm) var(--radius-sm) 0 0 !important;
+    padding: 0.65rem 1.35rem !important;
+}
+
+[data-testid="stTabs"] [data-testid="stTab"]:hover {
+    color: var(--text-secondary) !important;
+    background: var(--accent-muted) !important;
+}
+
+[data-testid="stTabs"] [data-testid="stTab"][aria-selected="true"] {
+    color: var(--text-primary) !important;
+    border-bottom: 2px solid var(--accent) !important;
+    background: var(--accent-muted) !important;
+}
+
+/* ── Welcome screen ──────────────────────────────────────────────────────── */
+.welcome-container {
+    text-align: center;
+    padding: 3rem 2rem 2rem;
+    max-width: 680px;
+    margin: 1.5rem auto 2rem;
+}
+
+.welcome-icon {
+    font-size: 4rem;
+    margin-bottom: 1.25rem;
+    filter: drop-shadow(0 0 20px rgba(99, 102, 241, 0.45));
+}
+
+.welcome-title {
+    font-size: 2.5rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    -webkit-text-fill-color: var(--text-primary) !important;
+    background: linear-gradient(135deg, #f8fafc 0%, #c7d2fe 50%, #a5b4fc 100%) !important;
+    -webkit-background-clip: text !important;
+    background-clip: text !important;
+    letter-spacing: -0.03em !important;
+    margin-bottom: 0.85rem !important;
+    line-height: 1.15 !important;
+}
+
+.welcome-subtitle {
+    color: var(--text-tertiary) !important;
+    font-size: 1.1rem;
+    line-height: 1.75;
+    margin-bottom: 2.25rem;
+    font-weight: 400;
+}
+
+.examples-title {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: var(--text-muted) !important;
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+    margin-bottom: 1.1rem;
+}
+
+/* ── Chat messages ───────────────────────────────────────────────────────── */
+.message-row {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.85rem;
+    margin-bottom: 1.35rem;
+    animation: fadeInUp 0.3s ease forwards;
+}
+
+@keyframes fadeInUp {
+    from { opacity: 0; transform: translateY(8px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+.user-row {
+    flex-direction: row-reverse;
+}
+
+.avatar {
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.05rem;
+    flex-shrink: 0;
+}
+
+.user-avatar {
+    background: linear-gradient(135deg, #4f46e5, #7c3aed);
+    box-shadow: 0 2px 14px rgba(79, 70, 229, 0.45);
+}
+
+.assistant-avatar {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    box-shadow: 0 0 12px rgba(99, 102, 241, 0.15);
+}
+
+.message-bubble {
+    max-width: 75%;
+    border-radius: var(--radius-lg);
+    padding: 1rem 1.2rem;
+    line-height: var(--line-height);
+    font-size: 0.95rem;
+    box-shadow: var(--shadow-sm);
+}
+
+.user-bubble {
+    background: var(--user-bubble);
+    border: 1px solid var(--user-border);
+    border-top-right-radius: 4px;
+}
+
+.assistant-bubble {
+    background: var(--assistant-bubble);
+    border: 1px solid var(--border);
+    border-top-left-radius: 4px;
+}
+
+.message-content {
+    color: var(--text-primary) !important;
+    white-space: pre-wrap;
+    word-break: break-word;
+    font-weight: 400;
+}
+
+.sources-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.45rem;
+    margin-top: 0.85rem;
+    padding-top: 0.85rem;
+    border-top: 1px solid var(--border);
+}
+
+.source-chip {
+    background: var(--accent-muted);
+    border: 1px solid var(--accent-border);
+    border-radius: 999px;
+    padding: 0.3rem 0.75rem;
+    font-size: 0.78rem;
+    color: var(--accent-hover) !important;
+    font-family: var(--font-mono);
+    font-weight: 500;
+    white-space: nowrap;
+}
+
+/* ── Summary tab ─────────────────────────────────────────────────────────── */
+.tab-title {
+    font-size: 1.55rem !important;
+    font-weight: 700 !important;
+    color: var(--text-primary) !important;
+    margin-bottom: 1.25rem !important;
+    letter-spacing: -0.02em !important;
+}
+
+.summary-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 1.65rem;
+    color: var(--text-primary) !important;
+    line-height: 1.75;
+    font-size: 1rem;
+    margin-bottom: 1.5rem;
+    box-shadow: var(--shadow-md);
+    white-space: pre-wrap;
+}
+
+.key-point-chip {
+    background: var(--bg-elevated);
+    border: 1px solid var(--border);
+    border-left: 4px solid var(--accent);
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    padding: 0.75rem 1.1rem;
+    margin-bottom: 0.55rem;
+    color: var(--text-secondary) !important;
+    font-size: 0.95rem;
+    line-height: 1.55;
+}
+
+/* ── About tab ───────────────────────────────────────────────────────────── */
+.about-container {
+    max-width: 780px;
+    padding: 0.5rem 0.25rem;
+    color: var(--text-secondary) !important;
+    line-height: 1.75;
+    font-size: 0.98rem;
+}
+
+.about-container h2 {
+    color: var(--text-primary) !important;
+    font-size: 1.65rem !important;
+    font-weight: 700 !important;
+    margin-bottom: 1rem !important;
+}
+
+.about-container h3 {
+    color: var(--text-primary) !important;
+    font-size: 1.15rem !important;
+    font-weight: 600 !important;
+    margin: 1.75rem 0 0.85rem !important;
+}
+
+.about-container ul {
+    color: var(--text-tertiary) !important;
+    padding-left: 1.35rem !important;
+}
+
+.about-container li {
+    margin-bottom: 0.4rem !important;
+    color: var(--text-tertiary) !important;
+}
+
+.arch-flow {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 1.15rem 1.35rem;
+    font-family: var(--font-mono);
+    font-size: 0.88rem;
+    color: var(--accent-hover) !important;
+    line-height: 1.6;
+    overflow-x: auto;
+}
+
+.tech-grid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.65rem;
+    margin-bottom: 1.25rem;
+}
+
+.tech-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-sm);
+    padding: 0.5rem 1rem;
+    font-size: 0.88rem;
+    font-weight: 500;
+    color: var(--text-secondary) !important;
+    transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.tech-card:hover {
+    border-color: var(--accent-border);
+    color: var(--text-primary) !important;
+    background: var(--accent-muted);
+}
+
+/* ── Alerts, spinner, download ───────────────────────────────────────────── */
+[data-testid="stAlert"] {
+    border-radius: var(--radius) !important;
+    font-family: var(--font) !important;
+    font-size: 0.92rem !important;
+    border: 1px solid var(--border) !important;
+}
+
+[data-testid="stAlert"] p {
+    color: var(--text-secondary) !important;
+}
+
+[data-testid="stSpinner"] {
+    color: var(--accent-hover) !important;
+}
+
+[data-testid="stSpinner"] + div,
+[data-testid="stSpinner"] label {
+    color: var(--text-tertiary) !important;
+}
+
+[data-testid="stDownloadButton"] button {
+    background: var(--bg-card) !important;
+    border: 1px solid var(--border-strong) !important;
+    color: var(--text-secondary) !important;
+    font-weight: 600 !important;
+}
+
+[data-testid="stDownloadButton"] button:hover {
+    background: var(--bg-hover) !important;
+    color: var(--text-primary) !important;
+    border-color: var(--accent-border) !important;
+}
+
+/* Info / success / error boxes contrast */
+[data-testid="stNotification"] {
+    border-radius: var(--radius) !important;
+}
+
+div[data-testid="stToast"] {
+    font-family: var(--font) !important;
+}
+
+/* ── Scrollbar ───────────────────────────────────────────────────────────── */
+::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+}
+
+::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+::-webkit-scrollbar-thumb {
+    background: var(--border-strong);
+    border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+    background: var(--accent);
+}
+
+/* ── Focus & reduced motion (a11y) ───────────────────────────────────────── */
+@media (prefers-reduced-motion: reduce) {
+    .welcome-icon,
+    .status-dot,
+    .message-row {
+        animation: none !important;
+    }
+
+    .stButton > button:hover {
+        transform: none !important;
+    }
+}
+
+:focus-visible {
+    outline: 2px solid var(--accent-hover) !important;
+    outline-offset: 2px !important;
+}
+
+/* ── Hide Streamlit chrome (keep toolbar — sidebar toggle is inside it in 1.57) */
+#MainMenu { visibility: hidden !important; }
+footer { visibility: hidden !important; }
+header[data-testid="stHeader"] {
+    background: transparent !important;
+}
+
+[data-testid="stToolbar"] {
+    visibility: visible !important;
+    display: flex !important;
+}
+
+/* ── Responsive ────────────────────────────────────────────────────────────── */
+@media (max-width: 768px) {
+    .message-bubble {
+        max-width: 92% !important;
+    }
+
+    .welcome-title {
+        font-size: 2rem !important;
+    }
+
+    .welcome-subtitle {
+        font-size: 1rem;
+    }
+
+    .arch-flow {
+        font-size: 0.78rem !important;
+    }
+
+    [data-testid="stSidebarUserContent"],
+    [data-testid="stSidebarContent"] {
+        padding: 1.25rem 1rem !important;
+    }
+}
