@@ -86,7 +86,7 @@ Gemini LLM Response Generation
 ## 📂 Project Structure
 
 ```bash
-DOCUMIND-AI_CLAUDE/
+DOCUMIND-AI_/
 │
 ├── data/
 │   └── uploads/
