@@ -226,22 +226,6 @@ http://localhost:8501
 
 ---
 
-# 📸 Screenshots
-
-## Upload & Chat Interface
-
-(Add screenshot here)
-
-## AI Response with Source Citation
-
-(Add screenshot here)
-
-## Document Summarization
-
-(Add screenshot here)
-
----
-
 # 🔍 How It Works
 
 1. User uploads PDF documents
