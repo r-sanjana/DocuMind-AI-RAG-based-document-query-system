@@ -83,13 +83,16 @@ Gemini LLM Response Generation
 ![Document Summarization](screenshots/document_summarization.png)
 
 
-# 📂 Project Structure
+## 📂 Project Structure
 
-DOCUMIND-AI
+```bash
+DOCUMIND-AI_CLAUDE/
 │
 ├── data/
 │   └── uploads/
-│       ├── notes    
+│       ├── sample_resume.pdf
+│       ├── ai_notes.pdf
+│       └── research_document.pdf
 │
 ├── documind-ai/
 │   │
@@ -105,7 +108,6 @@ DOCUMIND-AI
 │   ├── frontend/
 │   │   ├── styles/
 │   │   │   └── main.css
-│   │   │
 │   │   └── app.py
 │   │
 │   ├── vectorstore/
