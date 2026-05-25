@@ -62,25 +62,68 @@ Gemini LLM Response Generation
 
 ---
 
+## 📸 Screenshots
+
+### 🏠 Home Page
+![Home Page](screenshots/home_page.png)
+
+---
+
+### 📘 About Page
+![About Page](screenshots/about_page.png)
+
+---
+
+### 💬 AI Chat Interface
+![Chat Interface](screenshots/chat_interface.png)
+
+---
+
+### 📄 Document Summarization
+![Document Summarization](screenshots/document_summarization.png)
+
+
 # 📂 Project Structure
 
-```bash
-documind-ai/
+DOCUMIND-AI
 │
-├── backend/
-│   ├── routes/
-│   ├── services/
-│   ├── utils/
-│   └── main.py
+├── data/
+│   └── uploads/
+│       ├── notes    
 │
-├── frontend/
-│   ├── styles/
-│   └── app.py
+├── documind-ai/
+│   │
+│   ├── .streamlit/
+│   │   └── config.toml
+│   │
+│   ├── backend/
+│   │   ├── routes/
+│   │   ├── services/
+│   │   ├── utils/
+│   │   └── main.py
+│   │
+│   ├── frontend/
+│   │   ├── styles/
+│   │   │   └── main.css
+│   │   │
+│   │   └── app.py
+│   │
+│   ├── vectorstore/
+│   │   ├── faiss_index.index
+│   │   └── metadata.pkl
+│   │
+│   ├── README.md
+│   ├── render.yaml
+│   ├── requirements.txt
+│   └── setup.sh
 │
-├── vectorstore/
-├── data/uploads/
-├── requirements.txt
-├── setup.sh
+├── screenshots/
+│   ├── about_page.png
+│   ├── chat_interface.png
+│   ├── document_summarization.png
+│   └── home_page.png
+│
+├── .gitignore
 └── README.md
 ```
 
