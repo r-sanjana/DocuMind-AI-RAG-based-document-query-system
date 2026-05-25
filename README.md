@@ -90,9 +90,7 @@ DOCUMIND-AI_/
 │
 ├── data/
 │   └── uploads/
-│       ├── sample_resume.pdf
-│       ├── ai_notes.pdf
-│       └── research_document.pdf
+│       ├── notes.pdf
 │
 ├── documind-ai/
 │   │
