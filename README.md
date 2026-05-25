@@ -116,8 +116,9 @@ DOCUMIND-AI_/
 │   │
 │   ├── README.md
 │   ├── render.yaml
-│   ├── requirements.txt
 │   └── setup.sh
+│ 
+├── requirements.txt
 │
 ├── screenshots/
 │   ├── about_page.png
